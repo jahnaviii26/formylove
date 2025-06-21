@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Envelope Surprise</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .envelope {
+      width: 150px;
+      height: 100px;
+      background-color: #f8fafc;
+      position: relative;
+      cursor: pointer;
+      border: 2px solid #334155;
+      border-bottom: none;
+    }
+    .envelope::before, .envelope::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+    }
+    .envelope::before {
+      top: 0;
+      left: 0;
+      border-width: 0 75px 50px 75px;
+      border-color: transparent transparent #334155 transparent;
+    }
+    .note {
+      background: white;
+      border: 1px solid #94a3b8;
+      padding: 1rem;
+      position: absolute;
+      width: 200px;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: none;
+      animation: slideUp 0.6s ease-out forwards;
+    }
+    @keyframes slideUp {
+      0% {
+        transform: translate(-50%, 30%);
+        opacity: 0;
+      }
+      100% {
+        transform: translate(-50%, 0%);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center h-screen bg-gray-100">
+
+  <div class="relative text-center">
+    <div class="envelope" onclick="showNote()"></div>
+    <div id="note" class="note shadow-lg rounded-xl">
+      <p class="text-gray-800 font-medium"> You are the best baby! I love you 💌</p>
+    </div>
+  </div>
+
+  <script>
+    function showNote() {
+      const note = document.getElementById('note');
+      note.style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
